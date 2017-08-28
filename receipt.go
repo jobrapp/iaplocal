@@ -59,14 +59,14 @@ func Parse(root *x509.Certificate, data []byte) (Receipts, error) {
 	if err != nil {
 		return Receipts{}, err
 	}
+	
+	//if !verifyCertificates(root, pkcs.Certificates) {
+	//	return Receipts{}, ErrInvalidCertificate
+	//}
 
-	if !verifyCertificates(root, pkcs.Certificates) {
-		return Receipts{}, ErrInvalidCertificate
-	}
-
-	if !verifyPKCS(pkcs) {
-		return Receipts{}, ErrInvalidSignature
-	}
+	//if !verifyPKCS(pkcs) {
+	//	return Receipts{}, ErrInvalidSignature
+	//}
 
 	return parsePKCS(pkcs)
 }
